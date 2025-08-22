@@ -1,3 +1,4 @@
+<script>
 document.getElementById('formLogin').addEventListener('submit', function(event) {
   event.preventDefault(); // Impede o envio do formulário
 
@@ -5,14 +6,21 @@ document.getElementById('formLogin').addEventListener('submit', function(event) 
   const pass = document.getElementById('pass').value;
   const msg = document.getElementById('msg');
 
-  // Exemplo de login e senha corretos
-  const loginCorreto = 'admin';
-  const senhaCorreta = '1234';
+  // Lista de usuários válidos com suas senhas
+  const usuarios = [
+    { username: 'Naty', senha: '1234' },
+    { username: 'Cintia', senha: '1234' },
+    { username: 'Ialo', senha: '1234' }
+  ];
 
-  if (user === loginCorreto && pass === senhaCorreta) {
+  // Verifica se há algum usuário com o login e senha informados
+  const usuarioValido = usuarios.find(u => u.username === user && u.senha === pass);
+
+  if (usuarioValido) {
     msg.style.color = 'green';
     msg.textContent = 'Login bem-sucedido!';
-    // Aqui você poderia redirecionar, ex: window.location.href = 'pagina.html';
+    // Redirecionamento opcional:
+    // window.location.href = 'pagina.html';
   } else {
     msg.style.color = 'red';
     msg.textContent = 'Usuário ou senha incorretos!';
@@ -25,4 +33,5 @@ document.getElementById('formLogin').addEventListener('submit', function(event) 
     document.getElementById('user').focus();
   }
 });
+</script>
 
