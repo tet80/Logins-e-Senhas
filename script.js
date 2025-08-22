@@ -1,21 +1,28 @@
-const usuarios = [
-  { usuario: "Cintia", senha: "1234" },
-  { usuario: "Naty", senha: "1234" },
-  { usuario: "Tete", senha: "1234" }
-];
+document.getElementById('formLogin').addEventListener('submit', function(event) {
+  event.preventDefault(); // Impede o envio do formulário
 
-const formLogin = document.getElementById("formLogin");
-const user = document.getElementById("user");
-const pass = document.getElementById("pass");
-const msg = document.getElementById("msg");
+  const user = document.getElementById('user').value;
+  const pass = document.getElementById('pass').value;
+  const msg = document.getElementById('msg');
 
-formLogin.onsubmit = (e) => {
-  e.preventDefault();
-  const u = user.value;
-  const p = pass.value;
+  // Exemplo de login e senha corretos
+  const loginCorreto = 'admin';
+  const senhaCorreta = '1234';
 
-  const ok = usuarios.some(({ usuario, senha }) => u === usuario && p === senha);
+  if (user === loginCorreto && pass === senhaCorreta) {
+    msg.style.color = 'green';
+    msg.textContent = 'Login bem-sucedido!';
+    // Aqui você poderia redirecionar, ex: window.location.href = 'pagina.html';
+  } else {
+    msg.style.color = 'red';
+    msg.textContent = 'Usuário ou senha incorretos!';
 
-  msg.textContent = ok ? "✅ Login realizado com sucesso!" : "❌ Usuário ou senha incorretos.";
-  msg.style.color = ok ? "green" : "red";
-};
+    // Limpa os campos
+    document.getElementById('user').value = '';
+    document.getElementById('pass').value = '';
+
+    // Coloca o foco de volta no campo de usuário
+    document.getElementById('user').focus();
+  }
+});
+
