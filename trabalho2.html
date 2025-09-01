@@ -5,9 +5,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="trabalho2.css">
-    <link href="https://www.tudogostoso.com.br/receita/23-bolo-de-cenoura.html" rel="stylesheet">
-    <link href="https://www.tudogostoso.com.br/receita/38619-bolo-de-chocolate-com-morango.html" rel="stylesheet">
-    <link rel="stylesheet" href="https://www.tudogostoso.com.br/receita/199993-bolo-de-limao.html">
     <title>Página 2</title>
 </head>
 
@@ -17,27 +14,46 @@
     <ul>
         <li onclick="carregarBolo('Cenoura')">Bolo de cenoura e chocolate</li>
         <li onclick="carregarBolo('Morango')">Bolo de chocolate com morango</li>
-        <li onclick="carregarBolo('Limão')">Bolo de limão com corbetura</li>
-        
+        <li onclick="carregarBolo('Limão')">Bolo de limão com cobertura</li>
     </ul>
 
     <div id="detalhes"></div>
 
-    
-    <button onclick="window.location.href='index.html'">Voltar à página inicial</button>
+    <button onclick="window.location.href='trabalho.html'">Voltar à página inicial</button>
+
+    <footer class="rodape-Bolos">
+        <div class="container-rodape">
+            <p>&copy; 2025 Receitas de Bolos — Todos os direitos reservados.</p>
+            <p>Contato: (31) 3458-9223</p>
+            <div class="links-sociais">
+                <a href="https://www.instagram.com/" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.youtube.com/F1" target="_blank"><i class="fab fa-youtube"></i></a>
+                <a href="https://www.tudogostoso.com.br" target="_blank">TudoGostoso</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        async function carregarBolo(tipo) {
+            try {
+                document.getElementById("detalhes").innerHTML = "Carregando sua receita...";
+
+                await new Promise(resolve => setTimeout(resolve, 2000));
+
+                const mensagens = {
+                    "Cenoura": "Bolo de Cenoura com Cobertura de Chocolate\n\nIngredientes:\n- 3 cenouras médias picadas\n- 3 ovos\n- 1 xícara de óleo\n- 2 xícaras de açúcar\n- 2 xícaras de farinha de trigo\n- 1 colher (sopa) de fermento em pó\n\nCobertura:\n- 1/2 xícara de leite\n- 2 colheres (sopa) de chocolate em pó\n- 6 colheres (sopa) de açúcar\n- 1 colher (sopa) de manteiga\n\nModo de Preparo:\n1. Bata no liquidificador a cenoura, os ovos, o óleo e o açúcar.\n2. Misture a farinha e o fermento.\n3. Despeje em forma untada e asse a 180°C por cerca de 40 minutos.\n4. Para a cobertura, leve os ingredientes ao fogo até engrossar.\n5. Cubra o bolo ainda quente.",
+
+                    "Morango": "Bolo de Morango com Chocolate\n\nIngredientes da Massa:\n- 5 ovos\n- 1/2 xícara de açúcar\n- 1 xícara de farinha de trigo\n- 3 colheres (sopa) de chocolate em pó\n- 1 colher (sobremesa) de fermento\n\nRecheio e Cobertura:\n- 600 g de chocolate ao leite picado\n- 1 lata de creme de leite\n- 400 g de morangos lavados\n- 1/2 xícara de leite\n- 1 colher (sopa) de conhaque (opcional)\n\nModo de Preparo:\n1. Bata as claras em neve, acrescente gemas e açúcar.\n2. Misture delicadamente a farinha, chocolate e fermento.\n3. Asse em forma untada a 200°C por 40 minutos.\n4. Derreta o chocolate e misture com o creme de leite.\n5. Amasse metade dos morangos com um garfo.\n6. Corte o bolo ao meio, umedeça com leite e conhaque.\n7. Recheie com morangos amassados e metade do chocolate.\n8. Cubra com o restante do bolo e finalize com chocolate e morangos inteiros.",
+
+                    "Limão": "Bolo de Limão com Cobertura\n\nIngredientes da Massa:\n- 3 ovos\n- 1 xícara de leite\n- 1/2 xícara de óleo\n- Suco de 2 limões\n- Raspas da casca de 1 limão\n- 1 e 1/2 xícara de açúcar\n- 2 xícaras de farinha de trigo\n- 1 colher (sopa) de fermento em pó\n\nCobertura:\n- 1 lata de leite condensado\n- Suco de 1 limão\n- Raspas de limão para decorar\n\nModo de Preparo:\n1. Bata os ovos, leite, óleo, suco de limão, raspas e açúcar no liquidificador.\n2. Misture a farinha e o fermento delicadamente.\n3. Despeje em forma untada e asse a 180°C por 35 a 40 minutos.\n4. Misture o leite condensado com o suco de limão até engrossar.\n5. Espalhe sobre o bolo frio e decore com raspas de limão."
+                };
+
+                document.getElementById("detalhes").innerText = mensagens[tipo] || "Receita não encontrada.";
+            } catch (erro) {
+                document.getElementById("detalhes").innerText = "Erro: " + erro.message;
+            }
+        }
+    </script>
 </body>
 
-<footer class="rodape-Bolos">
-    <div class="container-rodape">
-        <p>&copy; 2025 Receitas de Bolos — Todos os direitos reservados.</p>
-        <p>Contato: (31) 3458-9223</p>
-        <div class="links-sociais">
-            <a href="https://www.instagram.com/" target="_blank"><i class="fab fa-instagram"></i></a>
-            <a href="https://www.youtube.com/F1" target="_blank"><i class="fab fa-youtube"></i></a>
-            <a href="https://www.tudogostoso.com.br" target="_blank"><i class="fab fa-Tudogostoso"></i> </a>
-        </div>
-    </div>
-</footer>
-
-<script src="pagina2.js"></script>
 </html>
