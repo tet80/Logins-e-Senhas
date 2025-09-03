@@ -16,6 +16,9 @@
   <input type="password" id="senha" placeholder=" Digite sua senha"> </p>
   <button onclick="verificarDados()">verificar</button>
 
+  <!-- Adicionando o botão para acessar a página do Trabalho 2 -->
+  <button onclick="window.location.href='trabalho2.html'">Ir para o Trabalho 2</button>
+
   <script>
     function verificarDados() {
       const nome = ["Ana", "Carla", "Nelma"];
@@ -39,7 +42,6 @@
           mensagem.innerHTML = " SERÁ QUE VOCÊ ESTA CADASTRADO?";
           titulo.innerHTML = "Validação de Usuário";
         }, 5000);
-
       }
       document.getElementById("nome").value = "";
       document.getElementById("senha").value = "";
@@ -50,11 +52,8 @@
       document.getElementById("mensagem").value = "";
 
       setTimeout(() => {
-        window.location.href = "https://www.exemplo.com";
-      }, 3000); // 3000 milissegundos = 3 segundos
-
-
-      // add missing closing brace for the function
+        window.location.href = "https://www.exemplo.com"; // 3000 milissegundos = 3 segundos
+      }, 3000);
     }
   </script>
 
@@ -99,6 +98,11 @@
       border-radius: 5px;
       font-size: 16px;
       cursor: pointer;
+      margin-top: 10px;
+    }
+
+    button:hover {
+      background-color: #0056b3;
     }
   </style>
 </body>
