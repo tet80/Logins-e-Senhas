@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rotas pelo mundo</title>
+    <link rel="stylesheet" href="estilo.css"> 
+</head>
+
+<body>
+    <header>
+        <h1>Rotas pelo Mundo</h1>
+    </header>
+
+    <main>
+        <h2>Escolha um destino:</h2>
+        <ul class="destinos">
+            <li onclick="carregarViagens('Salvador')">Salvador - BA</li>
+            <li onclick="carregarViagens('Santiago')">Santiago - Chile</li>
+            <li onclick="carregarViagens('Buenos Aires')">Buenos Aires - Argentina</li>
+        </ul>
+
+        <div id="detalhes" class="detalhes"></div>
+    </main>
+
+    <footer class="rodape-Viagens">
+        <div class="container-rodape">
+            <p>2025 Rotas pelo Mundo - Todos os direitos reservados.</p>
+            <p>Contato: (31) 3458-9223</p>
+        </div>
+    </footer>
+
+    <script>
+        async function carregarViagens(tipo) {
+            try {
+                document.getElementById("detalhes").innerHTML = "Carregando sua viagem...";
+
+                await new Promise(resolve => setTimeout(resolve, 2000));
+
+                const mensagens = {
+                    "Salvador": "Encontre voos baratos — Viagem Para Salvador. Filtre resultados para sua viagem ideal. Reserve voos facilmente. Melhores ofertas com uma busca fácil. Compare voos baratos e encontre sua melhor opção.",
+                    "Santiago": "Descubra o Chile com a Gente! Explore paisagens deslumbrantes, desde o deserto do Atacama até as geleiras da Patagônia. Viva experiências únicas em Santiago, Valparaíso, vinícolas premiadas e muito mais. Pacotes personalizados, suporte em português e roteiros inesquecíveis esperam por você.",
+                    "Buenos Aires": "Viva o melhor de Buenos Aires! Apaixone-se pela capital argentina com seus cafés charmosos, tango apaixonante e uma culinária de dar água na boca. Descubra a magia de bairros como Recoleta, Palermo e San Telmo com roteiros pensados para você."
+                };
+
+                document.getElementById("detalhes").innerText = mensagens[tipo] || "Viagem não encontrada.";
+            } catch (erro) {
+                document.getElementById("detalhes").innerText = "Erro: " + erro.message;
+            }
+        }
+    </script>
+</body>
+
+</html>
