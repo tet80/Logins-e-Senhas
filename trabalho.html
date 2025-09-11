@@ -1,110 +1,44 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
-
+<html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>START LOGIN</title>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>mudar cor</title>
 </head>
-
 <body>
-  <h1>INICIE SEU LOGIN</h1>
-  <p id="mensagem">Digite login e senha</p>
-  <h1 id="titulo">Validação de Usuário</h1>
-  <p id="mensagem"></p>
-  <input type="text" id="nome" placeholder="Digite seu login"> </p>
-  <input type="password" id="senha" placeholder=" Digite sua senha"> </p>
-  <button onclick="verificarDados()">verificar</button>
+ <h1> id="titulo"> Bem vindo(a)!</h1>
+ <p>clique no botão para mundar a cor da pagina de acordo com o horario atual.</p>
+ <button onclick="trocar()">mudar cor</button>
 
-  <!-- Adicionando o botão para acessar a página do Trabalho 2 -->
-  <button onclick="window.location.href='trabalho2.html'">Ir para o Trabalho 2</button>
 
-  <script>
-    function verificarDados() {
-      const nome = ["Ana", "Carla", "Nelma"];
-      const senha = ["123", "1234", "12345"];
+<script>
+ function trocar() {
+  const hora = new date().getHours();
+  let cor;
+  let mensagem;
 
-      const nomeinput = document.getElementById("nome").value;
-      const senhainput = document.getElementById("senha").value;
-      const mensagem = document.getElementById("mensagem");
+  if (hora >= 6 && horas < 12) {
+   cor = "#FFD700";
+   mensagem = "Bom dia!🌞";
+  } else if (hora>= 12 && hora< 18) {
+   cor = "#FF8C00";
+   mensagem = "Boa tarde! 🌇";
+  } else if (hora >= 18 && hora <23) {
+   cor = "#1E90FF";
+   mensagem = "Boa noite! 🌕";
+  }else {
+   cor = "#2F4F4F";
+   mensagem = "Hora de descansar! 🌙 ";
 
-      let loginvalido = false; // começa como false
+  }
 
-      for (let i = 0; i < nome.length; i++) {
-        if (nomeinput === nome[i] && senhainput === senha[i]) {
-          loginvalido = true; // muda para true se encontrar
-          mensagem.innerHTML = "CADASTRADO COM SUCESSO"
-        }
-      }
-      if (!loginvalido) {
-        mensagem.innerHTML = " NÃO CADASTRADO "
-        setTimeout(() => {
-          mensagem.innerHTML = " SERÁ QUE VOCÊ ESTA CADASTRADO?";
-          titulo.innerHTML = "Validação de Usuário";
-        }, 5000);
-      }
-      document.getElementById("nome").value = "";
-      document.getElementById("senha").value = "";
+  document.body.style.backgroudColor = cor;
+  document.getElementById("titulo").innerHTML = mensagem;
+  }
+  }
+ }
+</script> 
 
-      document.getElementById("nome").focus();
-
-      document.getElementById("titulo").value = "";
-      document.getElementById("mensagem").value = "";
-
-      setTimeout(() => {
-        window.location.href = "https://www.exemplo.com"; // 3000 milissegundos = 3 segundos
-      }, 3000);
-    }
-  </script>
-
-  <style>
-    body {
-      height: 100vh;
-      background-color: rgb(79, 83, 81);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-direction: column;
-    }
-
-    h1 {
-      color: yellow;
-      margin-bottom: 10px;
-    }
-
-    p {
-      color: tomato;
-      margin-bottom: 15px;
-    }
-
-    input {
-      width: 220px;
-      height: 35px;
-      margin: 8px 0;
-      padding: 5px 10px;
-      border: none;
-      border-radius: 8px;
-      outline: none;
-      box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
-    }
-
-    button {
-      background-color: blue;
-      height: 35px;
-      width: 120px;
-      color: aliceblue;
-      border: none;
-      padding: 10px;
-      border-radius: 5px;
-      font-size: 16px;
-      cursor: pointer;
-      margin-top: 10px;
-    }
-
-    button:hover {
-      background-color: #0056b3;
-    }
-  </style>
+ 
 </body>
-
 </html>
