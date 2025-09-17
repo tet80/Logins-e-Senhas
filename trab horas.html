@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1 id="titulo">Bem-vindo(a)</h1>
+    <p id="frase">Clique para saber mais sobre hoje!!</p>
+    <p id="hora"></p>
+    <p id="data"></p>
+    <button onclick="trocar()">Mudar cor</button>
+
+    <style>
+        body {
+            transition: background-color 1s;
+            font-family: Arial, sans-serif;
+            color: rgb(7, 7, 7);
+            text-align: center;
+            padding-top: 70px;
+        
+        }
+        button {
+            padding: 20px;
+            font-size: 16px;
+            margin-top: 20px;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+        }
+        @media(max-width: 768px)  {
+            body {
+                font-size: 35px;
+                padding-top: 50px;
+            }
+            button {
+                font-size: 14px;
+                padding: 16px;
+            }
+        }
+            
+        
+    </style>
+
+    <script>
+        function trocar() {
+            const agora = new Date();
+            const hora = agora.getHours();
+            const minutos = agora.getMinutes().toString().padStart(2, "0");
+            const opcoes = { weekday: 'long', year: 'numeric', month: 'long', day:'numeric'};
+            const dataFormatada = agora.toLocaleDateString("pt-BR", opcoes)
+
+            let cor;
+            let mensagem;
+
+            if (hora >= 6 && hora < 12) {
+                cor = "FFD700";
+                mensagem = "Bom dia! ☀";
+            }
+            else if (hora >= 12 && hora < 18) {
+                cor = "#FF8C00";
+                mensagem = "Boa Tarde! 🌄";
+            }
+            else{
+                cor = "#2F4F4F";
+                mensagem = "Hora de descansar! 🌃";
+            }
+
+            document.body.style.backgroundColor = cor;
+            document.getElementById("titulo").innerHTML = mensagem;
+            document.getElementById("frase").innerHTML ="";
+            document.getElementById("hora").innerHTML= hora +":"+ minutos;
+            document.getElementById("data").innerHTML="" + dataFormatada;
+        }
+    </script>
+</body>
+</html>
