@@ -3,57 +3,57 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mudar Cor e Mostrar Hora</title>
+  <title>Trocar Cor e Mostrar Hora</title>
 </head>
 <body>
-  <h1 id="titulo">Bem-vindo(a)!</h1>
-  <p id="mensagem">Clique no botão para mudar a cor da página de acordo com o horário atual.</p>
-  <p id="hora"></p> <!-- Aqui será mostrado a data e a hora -->
-  <button onclick="trocar()">Mudar cor</button>
+  <h1 id="titulo">Oi, bem-vindo!</h1>
+  <p id="mensagem">Clique no botão e veja a cor da página mudar de acordo com a hora do dia!</p>
+  <p id="hora"></p> <!-- Aqui vai aparecer a hora exata -->
+  <button onclick="mudarCor()">Mudar Cor</button>
 
   <script>
-    function trocar() {
+    function mudarCor() {
       const agora = new Date();
       const hora = agora.getHours();
       const minuto = agora.getMinutes();
       const segundo = agora.getSeconds();
 
-      let cor;
-      let mensagem;
+      let corDeFundo;
+      let saudacao;
 
-      // Formatação da hora e data
+      // Formata a data e hora
       const dia = String(agora.getDate()).padStart(2, '0');
-      const mes = String(agora.getMonth() + 1).padStart(2, '0'); // Meses começam de 0
+      const mes = String(agora.getMonth() + 1).padStart(2, '0'); // Lembre-se, os meses começam do 0
       const ano = agora.getFullYear();
       const horaFormatada = String(hora).padStart(2, '0');
       const minutoFormatado = String(minuto).padStart(2, '0');
       const segundoFormatado = String(segundo).padStart(2, '0');
-      const dataHora = `${dia}/${mes}/${ano} ${horaFormatada}:${minutoFormatado}:${segundoFormatado}`;
+      const horaCompleta = dia + '/' + mes + '/' + ano + ' ' + horaFormatada + ':' + minutoFormatado + ':' + segundoFormatado;
 
-      // Mudando a cor de fundo e a mensagem com base no horário
+      // Mudando a cor e a saudação dependendo da hora
       if (hora >= 6 && hora < 12) {
-        cor = "#FFD700"; // Amarelo (Bom dia)
-        mensagem = "Bom dia! 🌞";
+        corDeFundo = "#FFD700"; // Amarelo (Bom dia)
+        saudacao = "Bom dia! 🌞";
       } else if (hora >= 12 && hora < 18) {
-        cor = "#FF8C00"; // Laranja (Boa tarde)
-        mensagem = "Boa tarde! 🌇";
+        corDeFundo = "#FF8C00"; // Laranja (Boa tarde)
+        saudacao = "Boa tarde! 🌇";
       } else if (hora >= 18 && hora < 23) {
-        cor = "#1E90FF"; // Azul (Boa noite)
-        mensagem = "Boa noite! 🌕";
+        corDeFundo = "#1E90FF"; // Azul (Boa noite)
+        saudacao = "Boa noite! 🌕";
       } else {
-        cor = "#2F4F4F"; // Cinza escuro (Hora de descansar)
-        mensagem = "Hora de descansar! 🌙";
+        corDeFundo = "#2F4F4F"; // Cinza (Hora de descansar)
+        saudacao = "Hora de descansar! 🌙";
       }
 
-      // Atualizando a página
-      document.body.style.backgroundColor = cor;
-      document.getElementById("titulo").innerHTML = mensagem;
-      document.getElementById("hora").innerHTML = `Data e Hora: ${dataHora}`;
+      // Atualiza a cor de fundo e a mensagem
+      document.body.style.backgroundColor = corDeFundo;
+      document.getElementById("titulo").innerText = saudacao;
+      document.getElementById("hora").innerText = "Agora é: " + horaCompleta;
     }
 
-
-    trocar();
+    mudarCor(); // Chama a função já ao carregar a página
   </script>
 </body>
 </html>
+
 
