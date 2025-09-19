@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Relógio do Dia</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      text-align: center;
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #282c34;
+      transition: background-color 0.5s ease;
+    }
+    .container {
+      background-color: rgba(0, 0, 0, 0.6);
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+      color: white;
+      text-align: center;
+      width: 90%;
+      max-width: 500px;
+    }
+    h1 {
+      font-size: 2.5em;
+      margin-bottom: 10px;
+    }
+    p {
+      font-size: 1.5em;
+      margin: 5px 0;
+    }
+    .motivation {
+      font-size: 1.2em;
+      color: #ffeb3b;
+      font-style: italic;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1 id="titulo"></h1>
+    <p id="hora"></p>
+    <p id="diaSemana"></p>
+    <p class="motivation" id="motivacao"></p>
+  </div>
+
+  <script>
+    function atualizarPagina() {
+      var agora = new Date();
+      var hora = agora.getHours();
+      var minuto = (agora.getMinutes()).toString().padStart(2, "0");
+      var segundo = (agora.getSeconds()).toString().padStart(2, "0");
+
+      var dia = (agora.getDate()).toString().padStart(2, "0");
+      var mes = (agora.getMonth() + 1).toString().padStart(2, "0");
+      var ano = agora.getFullYear();
+
+      var diasSemana = ['Domingo', 'Segunda-feira', 'Terça-feira', 'Quarta-feira', 'Quinta-feira', 'Sexta-feira', 'Sábado'];
+      var diaSemana = diasSemana[agora.getDay()];
+
+      var saudacao = "";
+      var corFundo = "";
+      var motivacao = "";
+
+      // Definindo as saudações e cores de fundo
+      if (hora >= 6 && hora < 12) {
+        saudacao = "Bom dia! 🌞";
+        corFundo = "#FFD700"; // Cor do fundo para manhã
+        motivacao = "O dia começa com novas possibilidades!";
+      } else if (hora >= 12 && hora < 18) {
+        saudacao = "Boa tarde! 🌇";
+        corFundo = "#FF8C00"; // Cor do fundo para tarde
+        motivacao = "Aproveite o melhor da tarde!";
+      } else if (hora >= 18 && hora < 23) {
+        saudacao = "Boa noite! 🌕";
+        corFundo = "#1E90FF"; // Cor do fundo para noite
+        motivacao = "Que sua noite seja tranquila e renovadora!";
+      } else {
+        saudacao = "Hora de descansar! 🌙";
+        corFundo = "#2F4F4F"; // Cor do fundo para madrugada
+        motivacao = "Amanhã será um novo dia cheio de oportunidades!";
+      }
+
+      var horaCompleta = dia + "/" + mes + "/" + ano + " - " + (hora).toString().padStart(2, "0") + ":" + minuto + ":" + segundo;
+
+      // Atualiza a tela
+      document.body.style.backgroundColor = corFundo;
+      document.getElementById("titulo").innerText = saudacao;
+      document.getElementById("hora").innerText = horaCompleta;
+      document.getElementById("diaSemana").innerText = "Hoje é " + diaSemana;
+      document.getElementById("motivacao").innerText = motivacao;
+    }
+
+    atualizarPagina(); // Chama logo de cara
+    setInterval(atualizarPagina, 1000); // Atualiza a cada segundo
+  </script>
+</body>
+</html>
