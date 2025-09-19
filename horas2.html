@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Relógio do Dia</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin-top: 100px;
+      color: white;
+    }
+    h1 {
+      font-size: 2.5em;
+      margin-bottom: 10px;
+    }
+    p {
+      font-size: 1.2em;
+    }
+  </style>
+</head>
+<body>
+  <h1 id="titulo"></h1>
+  <p id="hora"></p>
+
+  <script>
+    function atualizarPagina() {
+      const agora = new Date();
+      const hora = agora.getHours();
+      const minuto = agora.getMinutes().toString().padStart(2, "0");
+      const segundo = agora.getSeconds().toString().padStart(2, "0");
+
+      const dia = agora.getDate().toString().padStart(2, "0");
+      const mes = (agora.getMonth() + 1).toString().padStart(2, "0");
+      const ano = agora.getFullYear();
+
+      let saudacao = "";
+      let corFundo = "";
+
+      if (hora >= 6 && hora < 12) {
+        saudacao = "Bom dia! 🌞";
+        corFundo = "#FFD700"; // Cor do fundo para manhã
+      } else if (hora >= 12 && hora < 18) {
+        saudacao = "Boa tarde! 🌇";
+        corFundo = "#FF8C00"; // Cor do fundo para tarde
+      } else if (hora >= 18 && hora < 23) {
+        saudacao = "Boa noite! 🌕";
+        corFundo = "#1E90FF"; // Cor do fundo para noite
+      } else {
+        saudacao = "Hora de descansar! 🌙";
+        corFundo = "#2F4F4F"; // Cor do fundo para madrugada
+      }
+
+      const horaCompleta = dia + "/" + mes + "/" + ano + " - " + hora.toString().padStart(2, "0") + ":" + minuto + ":" + segundo;
+
+      // Atualiza tudo na tela
+      document.body.style.backgroundColor = corFundo;
+      document.getElementById("titulo").innerText = saudacao;
+      document.getElementById("hora").innerText = horaCompleta;
+    }
+
+    atualizarPagina(); // Chama logo de cara
+    setInterval(atualizarPagina, 1000); // Atualiza a cada segundo
+  </script>
+</body>
+</html>
