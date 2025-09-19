@@ -14,7 +14,10 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      background-color: #282c34;
+      background-image: url('https://images.pexels.com/photos/53594/blue-clouds-day-fluffy-53594.jpeg');
+      background-size: cover;
+      background-position: center center;
+      background-attachment: fixed;
       transition: background-color 0.5s ease;
     }
     .container {
@@ -68,28 +71,26 @@
       var corFundo = "";
       var motivacao = "";
 
-      // Definindo as saudações e cores de fundo
       if (hora >= 6 && hora < 12) {
         saudacao = "Bom dia! 🌞";
-        corFundo = "#FFD700"; // Cor do fundo para manhã
+        corFundo = "#FFD700";
         motivacao = "O dia começa com novas possibilidades!";
       } else if (hora >= 12 && hora < 18) {
         saudacao = "Boa tarde! 🌇";
-        corFundo = "#FF8C00"; // Cor do fundo para tarde
+        corFundo = "#FF8C00";
         motivacao = "Aproveite o melhor da tarde!";
       } else if (hora >= 18 && hora < 23) {
         saudacao = "Boa noite! 🌕";
-        corFundo = "#1E90FF"; // Cor do fundo para noite
+        corFundo = "#1E90FF";
         motivacao = "Que sua noite seja tranquila e renovadora!";
       } else {
         saudacao = "Hora de descansar! 🌙";
-        corFundo = "#2F4F4F"; // Cor do fundo para madrugada
+        corFundo = "#2F4F4F";
         motivacao = "Amanhã será um novo dia cheio de oportunidades!";
       }
 
       var horaCompleta = dia + "/" + mes + "/" + ano + " - " + (hora).toString().padStart(2, "0") + ":" + minuto + ":" + segundo;
 
-      // Atualiza a tela
       document.body.style.backgroundColor = corFundo;
       document.getElementById("titulo").innerText = saudacao;
       document.getElementById("hora").innerText = horaCompleta;
@@ -97,8 +98,10 @@
       document.getElementById("motivacao").innerText = motivacao;
     }
 
-    atualizarPagina(); // Chama logo de cara
-    setInterval(atualizarPagina, 1000); // Atualiza a cada segundo
+    atualizarPagina();
+    setInterval(atualizarPagina, 1000);
   </script>
 </body>
 </html>
+
+
